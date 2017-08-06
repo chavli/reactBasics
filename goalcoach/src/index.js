@@ -23,9 +23,9 @@ firebaseApp.auth().onAuthStateChanged(user => {
         const { email, uid } = user
         store.dispatch(signedInUser(email, uid))
         onlineUsersRef.child(uid).set({ email })
-        browserHistory.push("/app")
+        browserHistory.push("/goalcoach/app")
     } else {
-        browserHistory.replace("/signin")
+        browserHistory.replace("/goalcoach/signin")
     }
 
 })
@@ -36,10 +36,10 @@ firebaseApp.auth().onAuthStateChanged(user => {
 ReactDOM.render(
     <Provider store={store}>
         <Router path="/goalcoach" history={browserHistory}>
-            <Route path="/app" component={App} />
-            <Route path="/signin" component={SignIn} />
-            <Route path="/signup" component={SignUp} />
-            <Route path="/resetpassword" component={ResetPassword} />
+            <Route path="/goalcoach/app" component={App} />
+            <Route path="/goalcoach/signin" component={SignIn} />
+            <Route path="/goalcoach/signup" component={SignUp} />
+            <Route path="/goalcoach/resetpassword" component={ResetPassword} />
         </Router>
     </Provider>, document.getElementById("root")
 
